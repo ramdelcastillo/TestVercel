@@ -4,63 +4,117 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Decimal to DPD Converter</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Simple Calculator</h1>
-    <label for="num1">First Number:</label>
-    <input type="number" id="num1">
-    <br><br>
-    <label for="num2">Second Number:</label>
-    <input type="number" id="num2">
-    <br><br>
-    <button onclick="calculateSum()">Calculate Sum</button>
-    <br><br>
-    <label for="result">Result:</label>
-    <input type="text" id="result">
-    <br><br>
-    <button onclick="downloadResult()">Download Result</button>
-    <script>
-        function calculateSum() {
-            // Get the values of the input fields
-            const num1 = document.getElementById('num1').value;
-            const num2 = document.getElementById('num2').value;
+    <header>
+        <h1>IEEE-754 Decimal-32 Floating-Point Converter</h1>
+    </header>
 
-            // Convert the input values to integers
-            const int1 = parseInt(num1);
-            const int2 = parseInt(num2);
-
-            // Calculate the sum of the two integers
-            const sum = int1 + int2;
-
-            // Display the result in the result input field
-            document.getElementById('result').value = sum;
-        }
-
-        function downloadResult() {
-            // Get the result value
-            const result = document.getElementById('result').value;
-
-            // Create a Blob object with the result data
-            const blob = new Blob([result], { type: 'text/plain' });
-
-            // Create a link element
-            const link = document.createElement('a');
-
-            // Set the download attribute with a filename
-            link.download = 'result.txt';
-
-            // Create a URL for the Blob and set it as the href attribute
-            link.href = URL.createObjectURL(blob);
-
-            // Append the link to the body (required for Firefox)
-            document.body.appendChild(link);
-
-            // Programmatically click the link to trigger the download
-            link.click();
-
-            // Remove the link from the document
-            document.body.removeChild(link);
-        }
-    </script>
+    <div class="side">
+        <div class="sidebar">
+            CSARCH2 - S14 GROUP 7
+            <p class="mem">
+                <ul class="custom-list">
+                    <li>Arca, Althea</li>
+                    <li>Lim, Alyanna</li>
+                    <li>Del Castillo, Jose Mari</li>
+                    <li>Fulo, Rulet</li>
+                </ul>
+            </p>        
+        </div>
+        <div class="container">
+    
+            
+            <main>
+                <section class="input-section">
+                        <h2>INPUT
+                            <div class="input-select">
+                                <select id="input-type">
+                                    <option value="decimal">Select input</option>
+                                    <option value="decimal">Decimal</option>
+                                    <option value="nan">NaN</option>
+                                </select>
+                            </div>
+                        </h2>  
+                    <div class="input-group">
+                        <label for="decimal-number">Enter Decimal Number</label>
+                        <input type="number" id="decimal-number" name="decimal-number" placeholder="Enter decimal number...">
+                    </div>
+                    <div class="input-group">
+                        <label for="exponent">Enter Exponent (Base-10)</label>
+                        <input type="number" id="exponent" name="exponent" placeholder="Enter exponent here...">
+                    </div>
+                    <div class="button-group">
+                        <button id="convert-button">Convert</button>
+                    </div>
+                </section>
+                <section class="results-section">
+                    <div class="processing-section">
+                        <h2>Processing</h2>
+                        <div class="output-group">
+                            <label for="normalized-decimal">Normalized Decimal</label>
+                            <div id="normalized-decimal" class="output-box">--</div>
+                        </div>
+                        <div class="output-group">
+                            <label for="final-exponent">Final Exponent</label>
+                            <div id="final-exponent" class="output-box">--</div>
+                        </div>
+                        <div class="output-group">
+                            <label for="e-prime">E-Prime</label>
+                            <div id="e-prime" class="output-box">--</div>
+                        </div>
+                    </div>
+                    <div class="output-section">
+                        <h2>Output</h2>
+                        <div class="output-group">
+                            <label for="sign-bit">Sign Bit</label>
+                            <div id="sign-bit" class="output-box">--</div>
+                        </div>
+                        <div class="output-group">
+                            <label for="combination-bits">Combination Bits</label>
+                            <div id="combination-bits" class="output-box">--</div>
+                        </div>
+                        <div class="output-group">
+                            <label for="exponent-bits">Exponent Bits</label>
+                            <div id="exponent-bits" class="output-box">--</div>
+                        </div>
+                        <div class="output-group">
+                            <label for="dpd">Densely Packed BCD</label>
+                            <div id="dpd" class="output-box">--</div>
+                        </div>
+                        <div class="output-group">
+                            <label for="final-answer-binary">Final Answer (Binary)</label>
+                            <div id="final-answer-binary" class="output-box">--</div>
+                        </div>
+                        <div class="output-group">
+                            <label for="final-answer-hex">Final Answer (Hex)</label>
+                            <div id="final-answer-hex" class="output-box">--</div>
+                        </div>
+                        <div class="button-group right-align">
+                            <button id="export-button">Export</button>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            <footer>
+                <div class="subject">
+                    CSARCH2 PROJECT
+                    <p class="mem">
+                        <ul class="custom-list">
+                            <li>Arca, Althea</li>
+                            <li>Lim, Alyanna</li>
+                            <li>Del Castillo, Jose Mari</li>
+                            <li>Fulo, Rulet</li>
+                        </ul>
+                    </p>        
+                </div>
+                      
+            </footer>
+        </div>
+    </div>
+    
+    
+    <script src="script.js"></script>
 </body>
 </html>
